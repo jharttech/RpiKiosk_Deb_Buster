@@ -9,6 +9,7 @@
 	</head>
 	<?php if(($_POST['blog'])){
 	header("Location: blogList.php");}?>
+<h1><b>FIX README FOR BUSTER AND UPDATED DEB FILE WHEN READY<b><h1></br></br></br>
 	<body>
 		<table id="title">
 			<tr>
