@@ -48,7 +48,7 @@ fi
 
 _PKG_OKTwo=$(dpkg-query -W --showformat='${Status}\n' vim|grep "install ok installed")
 if [ "" == "$_PKG_OKTwo" ]; then
-	--and-widget --title "vim check" \
+	--and-widget --begin --title "vim check" \
 		--msgbox "No vim editor found.\n\nInstalling and Setting up vim now." 0 0
 	sudo apt-get -y install vim|dialog --title "Installing vim" \
 		--clear \
@@ -79,20 +79,18 @@ while true; do
 		then
 			dialog --title "Screen Orientation" \
 			--sleep 3 \
-			--infobox "Now writing the following entries to config file.\n\n# Display orientation. Landscape = 0, Portrait = 1\ndisplay_rotate=0\nUse 24 bit colors\nframebuffer_depth24" 0 0
+			--infobox "Now writing the following entries to config file.\n\n# Display orientation. Landscape = 0, Portrait = 1\ndisplay_rotate=0\n" 0 0
 			sudo cp /boot/config.txt /boot/config.txt.DSbackup
 			echo -e "# Display orientation. Landscape = 0, Portrait = 1\ndisplay_rotate=0" | sudo tee -a /boot/config.txt >/dev/null
-			echo -e "\n# Use 24 bit colors\nframebuffer_depth=24" | sudo tee -a /boot/config.txt >/dev/null
 			break
 		else
 			if [ "$_Rotate" == "1" ];
 			then
 				dialog --title "Screen Orientation" \
 				--sleep 3 \
-				--infobox "Now writing the following entries to config file.\n\n# Display orientation. Landscape = 0, Portrait = 1\ndisplay_rotate=1\nUse 24 bit colors\nframebuffer_depth24" 0 0
+				--infobox "Now writing the following entries to config file.\n\n# Display orientation. Landscape = 0, Portrait = 1\ndisplay_rotate=1\n" 0 0
 				sudo cp /boot/config.txt /boot/config.txt.DSbackup
 				echo -e "# Display orientation.  Landscape = 0, Portrait = 1\ndisplay_rotate=1" | sudo tee -a /boot/config.txt >/dev/null
-				echo -e "\n# Use 24 bit colors\nframebuffer_depth=24" | sudo tee -a /boot/config.txt >dev/null
 				break
 			fi
 		fi
